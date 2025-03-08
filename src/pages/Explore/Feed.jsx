@@ -13,7 +13,7 @@ const Feed = () => {
 
   const getFeed = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/api/v1/feed", { withCredentials: true });
+     const res = await axios.get(BASE_URL + "/api/v1/feed", { withCredentials: true });
 
       if (res?.data?.data) {
         const shuffledProfiles = res.data.data.sort(() => Math.random() - 0.5);
