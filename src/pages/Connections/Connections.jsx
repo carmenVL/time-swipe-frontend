@@ -22,11 +22,11 @@ const Connections = () => {
 
       try {
         setLoading(true);
-        const res = await axios.get(`${BASE_URL}/api/matches/user/${currentUser._id}`, {
-          withCredentials: true,
-        });
-        
-        console.log("Matches recibidos:", res.data);
+        const baseUrl = import.meta.env.VITE_API_URL?.endsWith('/') 
+  ? import.meta.env.VITE_API_URL.slice(0, -1) 
+  : import.meta.env.VITE_API_URL;
+
+const res = await axios.get(`${baseUrl}/api/v1/feed`, { withCredentials: true });
         
         if (res.data && res.data.data && Array.isArray(res.data.data)) {
           if (res.data.data.length > 0) {
