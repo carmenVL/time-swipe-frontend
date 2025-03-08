@@ -13,7 +13,11 @@ const Feed = () => {
 
   const getFeed = async () => {
     try {
-const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/feed`, { withCredentials: true });
+const baseUrl = import.meta.env.VITE_API_URL?.endsWith('/') 
+  ? import.meta.env.VITE_API_URL.slice(0, -1) 
+  : import.meta.env.VITE_API_URL;
+
+const res = await axios.get(`${baseUrl}/api/v1/feed`, { withCredentials: true });
 
       if (res?.data?.data) {
         const shuffledProfiles = res.data.data.sort(() => Math.random() - 0.5);
